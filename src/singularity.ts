@@ -1647,8 +1647,10 @@ export const singularityPerks: SingularityPerk[] = [
           2
         ),
         amount2: format(
-          Math.pow(player.goldenQuarks + 1, 0.5)
-            * Math.pow(player.highestSingularityCount + 1, 0.5),
+          (player.goldenQuarks + 1 > 8888 
+          ? Math.pow(player.goldenQuarks + 1, 0.1) * Math.pow(8888, 0.4) 
+          : Math.pow(player.goldenQuarks + 1, 0.5))
+          * Math.pow(Math.min(player.highestSingularityCount + 1, 10), 0.5),
           2
         )
       })
