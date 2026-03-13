@@ -1780,9 +1780,11 @@ export const calculateAllCubeMultiplier = () => {
     +calculateEXUltraCubeBonus(),
     // Divisor: Exalt 6
     exaltPenalty,
+    // ONE MIND
+    player.singularityUpgrades.oneMind.getEffect().bonus ? calculateAscensionAcceleration() / 10 : 1,
     // The Ultimate Pen
-    1 + (player.singularityUpgrades.ultimatePen.getEffect().bonus ? 6.77 : 0)
-    // Total Global Cube Multipliers: 37
+    1 + (player.singularityUpgrades.ultimatePen.getEffect().bonus ? 6.77 : 0),
+    // Total Global Cube Multipliers: 38
   ]
 
   return {
@@ -2069,9 +2071,7 @@ export const getOcteractValueMultipliers = () => {
     1 + player.shopUpgrades.seasonPassLost / 1000,
     // cube upgrade 70, ie Cx20 (14*8 is 112, which is why)
     1 + (+(corruptionLevelSum >= 14 * 8) * player.cubeUpgrades[70]) / 10000,
-    1
-    + +(corruptionLevelSum >= 14 * 8)
-      * +player.singularityUpgrades.divinePack.getEffect().bonus,
+    1 + +(corruptionLevelSum >= 14 * 8) * (player.singularityUpgrades.divinePack.getEffect().bonus ? 6.77 : 0),
     // next three are flame/blaze/inferno
     +player.singularityUpgrades.singCubes1.getEffect().bonus,
     +player.singularityUpgrades.singCubes2.getEffect().bonus,
@@ -2355,7 +2355,7 @@ export const calculateQuarkMultiplier = () => {
   let multiplier = 1
   if (player.achievementPoints > 0) {
     // Achievement Points
-    multiplier += player.achievementPoints / 25000 // Cap of +0.20 at 5,000 Pts
+    multiplier += player.achievementPoints / 25000 // Max: +0.2822 at 7055 AP
   }
   if (player.achievements[250] > 0) {
     // Max research 8x25
@@ -2789,8 +2789,8 @@ export const calculateAscensionScore = () => {
   // 1.03 +
   // 0.005 from Cube 3x9 +
   // 0.0025 from Platonic ALPHA (Plat 1x5)
-  // 0.005 from Platonic BETA (Plat 2x5)
-  // Max: 1.0425
+  // 0.0025 from Platonic BETA (Plat 2x5)
+  // Max: 1.04
   baseScore *= Math.pow(
     1.03
       + 0.005 * player.cubeUpgrades[39]
@@ -2856,14 +2856,13 @@ export const CalcCorruptionStuff = () => {
     cubeBank += challengeModifier * player.highestchallengecompletions[i]
   }
 
-  const oneMindModifier = player.singularityUpgrades.oneMind.getEffect().bonus
-    ? calculateAscensionAcceleration() / 10
-    : 1
+  // I moved One Mind's effect to global cube multipliers, so oneMindModifier is unnecessary
+//  const oneMindModifier = player.singularityUpgrades.oneMind.getEffect().bonus ? calculateAscensionAcceleration() / 10 : 1
 
   // Calculation of Cubes :)
   let cubeGain = cubeBank
   cubeGain *= calculateCubeMultiplier(effectiveScore).mult
-  cubeGain *= oneMindModifier
+//  cubeGain *= oneMindModifier
 
   const bonusCubeExponent = player.singularityUpgrades.platonicTau.getEffect()
       .bonus
@@ -2877,17 +2876,17 @@ export const CalcCorruptionStuff = () => {
     tesseractGain += 0.5
   }
   tesseractGain *= calculateTesseractMultiplier(effectiveScore).mult
-  tesseractGain *= oneMindModifier
+//  tesseractGain *= oneMindModifier
 
   // Calculation of Hypercubes :)))
   let hypercubeGain = effectiveScore >= 1e9 ? 1 : 0
   hypercubeGain *= calculateHypercubeMultiplier(effectiveScore).mult
-  hypercubeGain *= oneMindModifier
+//  hypercubeGain *= oneMindModifier
 
   // Calculation of Platonic Cubes :))))
   let platonicGain = effectiveScore >= 2.666e12 ? 1 : 0
   platonicGain *= calculatePlatonicMultiplier(effectiveScore).mult
-  platonicGain *= oneMindModifier
+//  platonicGain *= oneMindModifier
 
   // Calculation of Hepteracts :)))))
   let hepteractGain = G.challenge15Rewards.hepteractUnlocked
@@ -2896,7 +2895,7 @@ export const CalcCorruptionStuff = () => {
     ? 1
     : 0
   hepteractGain *= calculateHepteractMultiplier(effectiveScore).mult
-  hepteractGain *= oneMindModifier
+//  hepteractGain *= oneMindModifier
 
   return [
     cubeBank,

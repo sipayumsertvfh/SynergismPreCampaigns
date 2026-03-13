@@ -57,7 +57,8 @@ export const corruptionDisplay = (index: number) => {
   const protoExponent = ((index === 2) && player.prototypeCorruptions[index] >= 10)
     ? 1 + 0.04 * player.platonicUpgrades[17] + 2 * Math.min(1, player.platonicUpgrades[17])
     : 1
-  let bonusLevel = (player.singularityUpgrades.corruptionFifteen.level > 0) ? 1 : 0
+  let bonusLevel = 0
+  bonusLevel += player.singularityUpgrades.corruptionFifteen.getEffect().bonus ? 1 : 0 // Fix: Only apply the effect when the upgrade is enabled (i.e. not in exalt 1/7)
   bonusLevel += +player.singularityChallenges.oneChallengeCap.rewards.freeCorruptionLevel
   const bonusText = (bonusLevel > 0) ? `[+${bonusLevel}]` : ''
 

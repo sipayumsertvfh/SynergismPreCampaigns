@@ -762,7 +762,8 @@ export const loadStatisticsCubeMultipliers = () => {
     34: { acc: 2, desc: 'The ULTIMATE Cash Grab:' },
     35: { acc: 2, desc: 'The ULTIMATE EX:' },
     36: { acc: 2, desc: 'EXALT 6 - Penalty for being too slow:', color: 'red' },
-    37: { acc: 2, desc: 'The Ultimate Pen:' }
+    37: { acc: 2, desc: 'ONE MIND Modifier:' },
+    38: { acc: 2, desc: 'The Ultimate Pen:' }
   }
   for (let i = 0; i < arr0.length; i++) {
     const statGCMi = DOMCacheGetOrSet(`statGCM${i + 1}`)
@@ -1014,7 +1015,7 @@ export const loadStatisticsCubeMultipliers = () => {
 
 export const loadStatisticsOfferingMultipliers = () => {
   const arr = calculateOfferings('prestige', false)
-  const map: Record<number, { acc: number; desc: string, color?: string }> = {
+  const map: Record<number, { acc: number; desc: string; color?: string }> = {
     1: { acc: 3, desc: 'Achievement 33 Bonus:' },
     2: { acc: 3, desc: 'Achievement 34 Bonus:' },
     3: { acc: 3, desc: 'Achievement 35 Bonus:' },
@@ -1520,7 +1521,7 @@ export const loadPowderMultiplier = () => {
 
 export const loadStatisticsAscensionSpeedMultipliers = () => {
   const arr = calculateAscensionSpeedMultiplier()
-  const map7: Record<number, { acc: number; desc: string, color?: string }> = {
+  const map7: Record<number, { acc: number; desc: string; color?: string }> = {
     1: { acc: 2, desc: 'Chronometer:' },
     2: { acc: 2, desc: 'Chronometer 2:' },
     3: { acc: 2, desc: 'Chronometer 3:' },
@@ -1537,13 +1538,13 @@ export const loadStatisticsAscensionSpeedMultipliers = () => {
     14: { acc: 2, desc: 'Funny stat that just says x1.00:', color: 'green' },
     15: { acc: 2, desc: 'A mediocre Ascension speedup:' },
     16: { acc: 2, desc: 'Chronometer ∞:' },
-    17: { acc: 2, desc: 'EXALT 3 Penalty:', color: 'red' },
+    17: { acc: 2, desc: 'EXALT 3 - Penalty for Ascending too much:', color: 'red' },
     18: { acc: 2, desc: 'EXALT 3 - Limited Ascensions:' },
     19: { acc: 2, desc: 'EXALT 6 - The Grand Singularity Speedrun:' },
     20: { acc: 2, desc: 'Chronometer S:' },
     21: { acc: 2, desc: 'The Ultimate Pen:' },
     22: { acc: 2, desc: 'A heckin\' good Ascension speedup:' },
-    23: { acc: 2, desc: 'Singularity Penalty:' }
+    23: { acc: 2, desc: 'Singularity Penalty:', color: 'red' }
   }
   for (let i = 0; i < arr.list.length; i++) {
     const statASMi = DOMCacheGetOrSet(`statASM${i + 1}`)
@@ -1572,7 +1573,7 @@ export const loadStatisticsGoldenQuarkMultipliers = () => {
     4: { acc: 2, desc: 'Golden Quarks I:' },
     5: { acc: 2, desc: 'Cookie Upgrade 19:' },
     6: { acc: 2, desc: 'EXALT 1 - No Singularity Upgrades:' },
-    7: { acc: 2, desc: 'Other funny stat that just says x1.00:' },
+    7: { acc: 2, desc: 'Other funny stat that just says x1.00:', color: 'lime' },
     8: { acc: 2, desc: 'Singularity Fast Forwards:' },
     9: { acc: 2, desc: 'Golden Revolution I:' },
     10: { acc: 2, desc: 'Immaculate Alchemy:' },
@@ -1658,7 +1659,7 @@ export const loadAddCodeModifiersAndEffects = () => {
     3: { acc: 0, desc: 'PL-AT δ:' },
     4: { acc: 0, desc: 'PL-AT Γ:' },
     5: { acc: 0, desc: 'PL-AT _:' },
-    6: { acc: 0, desc: 'PL-AT ΩΩ' },
+    6: { acc: 0, desc: 'PL-AT ΩΩ:' },
     7: { acc: 3, desc: '\'It all adds up\' Singularity Perk:' },
     8: { acc: 0, desc: 'Funny stat that just says x1:', color: 'gold' }
   }
@@ -1669,7 +1670,7 @@ export const loadAddCodeModifiersAndEffects = () => {
       statAddIntervalI.style.color = capacityMap[i + 1].color ?? 'white'
     }
     statAddIntervalI.childNodes[0].textContent = capacityMap[i + 1].desc
-    const prefix = i === 0 ? '' : (i === 5 || i === 7) ? 'x' : '+'
+    const prefix = i === 0 ? '' : (i === 6 || i === 7) ? 'x' : '+'
     DOMCacheGetOrSet(`s+cap${i + 1}`).textContent = `${prefix}${
       format(
         capacityStats.list[i],
@@ -1748,12 +1749,12 @@ export const loadStatisticsAmbrosiaLuck = () => {
     6: { acc: 0, desc: 'Octeract Ambrosia Luck Upgrades' },
     7: { acc: 0, desc: 'Ambrosia - Luck Module 1:' },
     8: { acc: 1, desc: 'Ambrosia - Luck Module 2:' },
-    9: { acc: 2, desc: 'Ambrosia - Cube-Luck Hybrid Module 1' },
-    10: { acc: 2, desc: 'Ambrosia - Quark-Luck Hybrid Module 1:' },
+    9: { acc: 2, desc: 'Ambrosia - Cube-Luck Hybrid Module:' },
+    10: { acc: 2, desc: 'Ambrosia - Quark-Luck Hybrid Module:' },
     11: { acc: 0, desc: '\'Primal Power\' Singularity 131 Bonus:' },
     12: { acc: 0, desc: '\'Primal Power\' Singularity 269 Bonus:' },
     13: { acc: 0, desc: 'Octeract-based Ambrosia Luck:' },
-    14: { acc: 0, desc: 'EXALT 5 - No Ambrosia Upgrades:' },
+    14: { acc: 0, desc: 'EXALT 5 - No Ambrosia Effects:' },
     15: { acc: 0, desc: 'Cookie Upgrade 27:' },
     16: { acc: 0, desc: 'Red Bar Fills with Cx29:' },
     17: { acc: 0, desc: 'The EXALTED Ambrosia Luck Increaser:' },
@@ -1792,7 +1793,7 @@ export const loadStatisticsAmbrosiaGeneration = () => {
     6: { acc: 4, desc: 'Octeract Upgrades:' },
     7: { acc: 4, desc: 'Ambrosia - Ambrosia Made Twice as Nice:' },
     8: { acc: 4, desc: 'EXALT 3 - Limited Ascensions:' },
-    9: { acc: 4, desc: 'EXALT 5 - No Ambrosia Upgrades:' },
+    9: { acc: 4, desc: 'EXALT 5 - No Ambrosia Effects:' },
     10: { acc: 4, desc: 'Cookie Upgrade 26:' },
     11: { acc: 4, desc: 'The ULTIMATE Cash Grab:' },
     12: { acc: 4, desc: 'The Ultimate Pen:' },
@@ -1887,7 +1888,7 @@ export const c15RewardUpdate = () => {
       0.98,
       Math.log(e / 2.5e4) / Math.log(2)
     )
-  }
+  } // To whoever wrote this code above, why? You could've just combined the two into one reward because they have the same scaling and unlock at the same point...
   if (e >= exponentRequirements[13]) {
     // Ant Speed [200k]
     G.challenge15Rewards[keys[13]] = Math.pow(

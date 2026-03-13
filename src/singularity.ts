@@ -921,7 +921,7 @@ export const singularityData: Record<
     minimumSingularity: 36,
     effect: (n: number) => {
       return {
-        bonus: 6.77 * n, // 7.77x Octeracts
+        bonus: n > 0, // 7.77x Octeracts
         get desc () {
           return i18next.t(
             `singularity.data.divinePack.effect${n > 0 ? 'Have' : 'HaveNot'}`
@@ -1819,6 +1819,12 @@ export const singularityPerks: SingularityPerk[] = [
     ],
     description: (n: number, levels: number[]) => {
       for (let i = levels.length - 1; i >= 0; i--) {
+        if (n < levels[1]) { // Stupid solution for a stupid problem
+          return i18next.t('singularity.perks.evenMoreQuarks.has1Stack', {
+            stack: 1,
+            inc: format(100 * (Math.pow(1.05, 1) - 1), 2)
+          })
+        }
         if (n >= levels[i]) {
           return i18next.t('singularity.perks.evenMoreQuarks.default', {
             stack: i + 1,

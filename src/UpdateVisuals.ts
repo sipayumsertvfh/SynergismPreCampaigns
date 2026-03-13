@@ -1306,16 +1306,22 @@ export const visualUpdateCorruptions = () => {
       hepteractAmount: format(metaData[8], 0, true)
     }
   )
-  DOMCacheGetOrSet('corruptionAntExponent').innerHTML = i18next.t(
-    'corruptions.antExponent',
-    {
-      exponent: format(
-        (1 - (0.9 / 90) * sumContents(player.usedCorruptions))
-          * G.extinctionMultiplier[player.usedCorruptions[7]],
-        3
-      )
-    }
-  )
+  if (player.currentChallenge.ascension === 15) {
+    DOMCacheGetOrSet('corruptionAntExponent').innerHTML = i18next.t(
+      'corruptions.antExponent',
+      {
+        exponent: format(0.01, 2) // Fix 2: Display as ^0.01 in C15
+      }
+    )
+  } else {
+    DOMCacheGetOrSet('corruptionAntExponent').innerHTML = i18next.t(
+      'corruptions.antExponent',
+      {
+        exponent: format((1 - 0.01 * Math.min(99, sumContents(player.usedCorruptions))), 2)
+      } // Fix: display this the same way it's calculated in Synergism.ts
+    )
+  }
+
   DOMCacheGetOrSet('corruptionSpiritBonus').innerHTML = i18next.t(
     'corruptions.spiritBonus',
     {

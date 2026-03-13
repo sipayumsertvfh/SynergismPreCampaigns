@@ -4642,7 +4642,7 @@ export const updateAntMultipliers = (): void => {
   if (player.currentChallenge.ascension !== 15) {
     G.globalAntMult = Decimal.pow(
       G.globalAntMult,
-      1 - (0.9 / 90) * Math.min(99, sumContents(player.usedCorruptions))
+      1 - 0.01 * Math.min(99, sumContents(player.usedCorruptions))
     )
   } else {
     // C15 used to have 9 corruptions set to 11, which above would provide a power of 0.01. Now it's hardcoded this way.
@@ -4678,10 +4678,17 @@ export const updateAntMultipliers = (): void => {
   }
   if (player.highestSingularityCount > 0) {
     G.globalAntMult = G.globalAntMult.times(
-      Math.pow(player.goldenQuarks + 1, 0.5)
-      * Math.pow(player.highestSingularityCount + 1, 0.5)
+      (player.goldenQuarks + 1 > 8888
+      ? Math.pow(player.goldenQuarks + 1, 0.1) * Math.pow(8888, 0.4)
+      : Math.pow(player.goldenQuarks + 1, 0.5))
+      * Math.pow(Math.min(player.highestSingularityCount + 1, 10), 0.5)
     )
   }
+  // NC-v1.0.2: Added a softcap to GQ and a cap to highest Singularity. Old formula: (GQ+1)^0.5 * (sing+1)^0.5
+  // I (probably) intended to have a softcap to this boost in the first place, but I didn't know what to do yet.
+  // At some point, I messed around in Desmos and found some good numbers. The softcap will only really be relevant
+  // post-Octeracts, and it exists to avoid a0 being trivialized in late exalts. (or just reduce that effect)
+  // Also, a0 is already made way faster from this boost
 
   if (player.usedCorruptions[7] >= 14) {
     G.globalAntMult = Decimal.pow(G.globalAntMult, 0.02)
@@ -5192,8 +5199,8 @@ export const resetCheck = async (
         ))
       }
       return Alert(
-        i18next.t('main.welcomeToSingularity', {
-          x: format(player.singularityCount)
+        i18next.t('main.welcomeToSingularity',
+        {x: format(player.singularityCount)
         })
       )
     }

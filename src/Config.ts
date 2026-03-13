@@ -1,6 +1,6 @@
 declare const PROD: boolean | undefined
 
-export const version = '1.0.1 - Goodbye, Event and PseudoCoin Tabs'
+export const version = '1.0.2 - You call this an update?'
 
 /**
  * PSEUDO DO NOT CHANGE THIS LINE

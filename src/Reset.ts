@@ -896,6 +896,7 @@ export const reset = (input: resetNames, fast = false, from = 'unknown') => {
  * Computes which achievements in 274-287 are achievable given current singularity number
  * 274~280 unlocked at: 1, 2, 3, 4, 5, 7, 10
  * 281~287 unlocked at: 25, 50, 100, 151, 200, 256, 273
+ * If the requirements are ever changed, PLEASE remember to adjust them here
  */
 export const updateSingularityAchievements = (): void => {
   if (player.highestSingularityCount >= 1) {

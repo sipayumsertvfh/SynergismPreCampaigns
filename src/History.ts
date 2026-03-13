@@ -267,13 +267,13 @@ const historyGains: Record<
   c15Score: {
     img: 'TinyChallenge15.png',
     formatter: formatDecimalSource,
-    imgTitle: 'C15 score',
+    imgTitle: 'C15 Exponent',
     onlyif: () => player.singularityCount > 0
   },
   quarkHept: {
     img: 'TinyQuarkHept.png',
     formatter: formatDecimalSource,
-    imgTitle: 'Quark Hept',
+    imgTitle: 'Quark Hepteract',
     onlyif: () => player.singularityCount > 0
   }
 }
@@ -322,7 +322,7 @@ const resetHistoryTableMapping: Record<Category, string> = {
 
 // Images associated with the various corruptions.
 const resetHistoryCorruptionImages = [
-  'CorruptViscocity.png',
+  'CorruptViscocity.png', // Viscosity is spelled wrong :derpsmith:
   'CorruptSpatialDilation.png',
   'CorruptHyperchallenged.png',
   'CorruptScientificIlliteracy.png',
@@ -334,12 +334,12 @@ const resetHistoryCorruptionImages = [
 
 const resetHistoryCorruptionTitles = [
   'Viscosity [Accelerators and Multipliers]',
-  'Spacial Dilation [Time]',
+  'Spatial Dilation [Global Speed]',
   'Hyperchallenged [Challenge Requirements]',
   'Scientific Illiteracy [Obtainium]',
   'Market Deflation [Diamonds]',
   'Extinction [Ants]',
-  'Drought [Offering EXP]',
+  'Drought [Rune EXP]',
   'Financial Recession [Coins]'
 ]
 
