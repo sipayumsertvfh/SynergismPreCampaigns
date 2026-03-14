@@ -85,7 +85,6 @@ export const toggleTheme = (initial = false, themeNumber = 1, change = false) =>
     DOMCacheGetOrSet('buildinghotkeys2').style.color = 'lightgray'
     DOMCacheGetOrSet('antspecies').style.color = 'royalblue' // HTML colors
     DOMCacheGetOrSet('achievementcolorcode2').style.color = 'purple'
-    DOMCacheGetOrSet('corruptionTesseracts').style.color = 'darkviolet'
     DOMCacheGetOrSet('antwelcome').style.color = 'lightslategrey'
     DOMCacheGetOrSet('confirmationToggleTitle').style.color = 'pink'
     DOMCacheGetOrSet('specialActionsTitle').style.color = 'pink'
