@@ -1225,6 +1225,9 @@ export const singularity = async (setSingNumber = -1): Promise<void> => {
   hold.highestSingularityCount = player.highestSingularityCount
   hold.goldenQuarks = player.goldenQuarks
   hold.shopUpgrades = player.shopUpgrades
+  hold.seenPenaltySpikeMessage = player.seenPenaltySpikeMessage
+  hold.seenS100Message = player.seenS100Message
+  hold.seenS150Message = player.seenS150Message
 
   if (!player.singularityChallenges.limitedTime.rewards.preserveQuarks) {
     player.worlds.reset()
