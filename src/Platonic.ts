@@ -469,7 +469,7 @@ export const autoBuyPlatonicUpgrades = () => {
   if (
     player.autoPlatonicUpgradesToggle
     && ((player.highestSingularityCount >= 100 && player.insideSingularityChallenge)
-      || player.highestSingularityCount >= 200)
+      || player.highestSingularityCount >= 150)
   ) {
     for (let i = 1; i < player.platonicUpgrades.length; i++) {
       if (player.platonicUpgrades[i] < platUpgradeBaseCosts[i].maxLevel) {

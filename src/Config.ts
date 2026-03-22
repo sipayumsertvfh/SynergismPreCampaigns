@@ -1,6 +1,6 @@
 declare const PROD: boolean | undefined
 
-export const version = '1.0.2 - You call this an update?'
+export const version = '1.0.3 - I\'m great at naming updates'
 
 /**
  * PSEUDO DO NOT CHANGE THIS LINE

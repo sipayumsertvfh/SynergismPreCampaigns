@@ -61,7 +61,7 @@ export const shopData: Record<keyof Player['shopUpgrades'], IShopData> = {
   offeringPotion: {
     price: 100,
     priceIncrease: 0,
-    maxLevel: 999999999,
+    maxLevel: 999999999999,
     type: shopUpgradeTypes.CONSUMABLE,
     refundable: false,
     refundMinimumLevel: 0,
@@ -71,7 +71,7 @@ export const shopData: Record<keyof Player['shopUpgrades'], IShopData> = {
     tier: 'Reincarnation',
     price: 100,
     priceIncrease: 0,
-    maxLevel: 999999999,
+    maxLevel: 999999999999,
     type: shopUpgradeTypes.CONSUMABLE,
     refundable: false,
     refundMinimumLevel: 0
@@ -1383,14 +1383,14 @@ export const friendlyShopName = (input: ShopUpgradeNames) => {
     antSpeed: 'Ant Speed',
     cashGrab: 'Cash Grab',
     shopTalisman: 'the Plastic talisman',
-    seasonPass: 'Season Pass',
+    seasonPass: 'Wow! Pass 1',
     challengeExtension: 'Reincarnation Challenge EX',
-    challengeTome: 'Challenge 10 Requirement Reduce',
+    challengeTome: 'Challenge 10 Tome, vol. 5',
     cubeToQuark: 'Cube Quarks +50%',
     tesseractToQuark: 'Tesseract Quarks +50%',
     hypercubeToQuark: 'Hypercube Quarks +50%',
-    seasonPass2: 'Season Pass 2',
-    seasonPass3: 'Season Pass 3',
+    seasonPass2: 'Wow! Pass 2',
+    seasonPass3: 'Wow! Pass 3',
     chronometer: 'Chronometer 1',
     infiniteAscent: 'Infinite Ascent',
     calculator: 'PL-AT calculator',
@@ -1404,9 +1404,9 @@ export const friendlyShopName = (input: ShopUpgradeNames) => {
     powderEX: 'Powder EX',
     chronometer2: 'Chronometer 2',
     chronometer3: 'Chronometer 3',
-    seasonPassY: 'Season Pass Y',
-    seasonPassZ: 'Season Pass Z',
-    challengeTome2: 'Challenge 10 Requirement Reduction 2',
+    seasonPassY: 'Wow! Pass Y',
+    seasonPassZ: 'Wow! Pass Z',
+    challengeTome2: 'Challenge 10 Tome, vol. 5 Extension',
     instantChallenge2: 'Instant Challenge Completions 2',
     cubeToQuarkAll: 'Quark Gain Cube Improvement 2',
     cashGrab2: 'Cash Grab 2',
@@ -1414,7 +1414,7 @@ export const friendlyShopName = (input: ShopUpgradeNames) => {
     obtainiumEX2: 'Obtainium EX 2',
     offeringEX2: 'Offering EX 2',
     powderAuto: 'Instant Powder',
-    seasonPassLost: 'Season Pass LOST',
+    seasonPassLost: 'Wow! Pass LOST',
     challenge15Auto: 'Challenge 15 Automation',
     extraWarp: 'Extra Warp',
     autoWarp: '...a quack powered Warps?',
@@ -1430,9 +1430,9 @@ export const friendlyShopName = (input: ShopUpgradeNames) => {
     obtainiumEX3: 'The ultimate Obtainium Upgrade',
     improveQuarkHept5: 'The ultimate Quark Hepteract Improver',
     chronometerInfinity: 'The ultimate Chronometer',
-    seasonPassInfinity: 'The ultimate Season pass',
+    seasonPassInfinity: 'The ultimate Wow! Pass',
     shopSingularityPenaltyDebuff: 'A Singularity Tenderizer',
-    shopAmbrosiaLuckMultiplier4: 'The Fourth Ambrosia Luck Multiplier',
+    shopAmbrosiaLuckMultiplier4: 'An Ambrosia Luck Multiplier',
     shopOcteractAmbrosiaLuck: 'Octeract-Based Ambrosia Luck Amplifier',
     shopAmbrosiaGeneration1: 'Ambrosia Generation Speedup',
     shopAmbrosiaGeneration2: 'Another Ambrosia Generation Speedup',
@@ -1694,7 +1694,7 @@ export const resetShopUpgrades = async (ignoreBoolean = false) => {
   if (!ignoreBoolean) {
     p = player.shopConfirmationToggle
       ? await Confirm(
-        'This will fully refund your non-permanent upgrades for an upfront cost of 15 Quarks. Would you like to do this?'
+        'This will fully refund your non-permanent upgrades. Would you like to do this?'
       )
       : true
   }
@@ -1731,10 +1731,11 @@ export const resetShopUpgrades = async (ignoreBoolean = false) => {
         player.shopUpgrades[key] = item.refundMinimumLevel
       }
     }
-    if (refunds) {
-      player.worlds.sub(15)
+    if (refunds && player.shopConfirmationToggle) {
+      void Alert('Successfully refunded your non-permanent upgrades!')
+    //  player.worlds.sub(15) // NC-v1.0.2a: Remove the 15 Quark cost
     } else if (!ignoreBoolean && player.shopConfirmationToggle) {
-      void Alert('Nothing to Refund!')
+      void Alert('Nothing to refund!')
     }
     player.quarksThisSingularity = singularityQuarks
   }

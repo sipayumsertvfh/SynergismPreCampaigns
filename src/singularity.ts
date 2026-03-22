@@ -1843,7 +1843,7 @@ export const singularityPerks: SingularityPerk[] = [
     name: () => {
       return i18next.t('singularity.perks.shopSpecialOffer.name')
     },
-    levels: [5, 20, 51],
+    levels: [5, 20, 37],
     description: (n: number, levels: number[]) => {
       if (n >= levels[2]) {
         return i18next.t('singularity.perks.shopSpecialOffer.hasLevel2')
@@ -2123,7 +2123,7 @@ export const singularityPerks: SingularityPerk[] = [
     name: () => {
       return i18next.t('singularity.perks.platonicClones.name')
     },
-    levels: [100, 200],
+    levels: [100, 150], // BUFF: Reduce level 2 to s150 (instead of s200)
     description: (n: number, levels: number[]) => {
       if (n >= levels[1]) {
         return i18next.t('singularity.perks.platonicClones.hasLevel1')

@@ -1134,8 +1134,8 @@ export const updateSingularityGlobalPerks = () => {
     shopData[key].refundable = !perk_20
   }
 
-  const perk_51 = player.highestSingularityCount >= 51
-  const shopItemPerk_51 = [
+  const perk_37 = player.highestSingularityCount >= 37 // NC-v1.0.3 - Change to s37 (I consistently maxed these by, like, s25 :derpsmith:)
+  const shopItemPerk_37 = [
     'seasonPass',
     'seasonPass2',
     'seasonPass3',
@@ -1143,8 +1143,8 @@ export const updateSingularityGlobalPerks = () => {
     'chronometer',
     'chronometer2'
   ] as const
-  for (const key of shopItemPerk_51) {
-    shopData[key].refundable = !perk_51
+  for (const key of shopItemPerk_37) {
+    shopData[key].refundable = !perk_37
   }
 }
 

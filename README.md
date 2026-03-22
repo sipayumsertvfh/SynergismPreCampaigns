@@ -17,13 +17,23 @@ NodeJS - https://nodejs.org/en/ (some recent version)
 3. Open the repository you just downloaded in VSCode
 4. Install the project dependencies, running `npm install` (or `make install` - If you intend to use `make` from here and on, make sure it is installed first)
 5. Install the liveserver extension for VSCode at https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer (or by searching for `Live Server` inside the Extensions Marketplace in VSCode. You can open the Extensions Marketplace by pressing `Ctrl+Shift+X`)
-6. Run `npm run watch:esbuild` (or `make watch`). Not required if you don't want to make any changes.
+6. Run `npm run watch:esbuild` (or `make watch`). **Even if you don't want to make changes, you must use this the first time you run the game!**
 7. Open the liveserver (bottom right corner icon similar to an Antenna in VSCode)
 8. Make your desired changes and test them. Enjoy!
+
+**To commit the changes you've made:**
+0. Note that if you only intend to run the mod locally and for yourself, you don't need to do this.
+1. Use `Ctrl+C` to exit from the previous command.
+2. Run `git add /path/to/file` or `git add -A` if any files were created
+3. Typecheck your TypeScript files with `npm run check:tsc` (or `make check`)
+4. Lint the code with `npm run lint` (or `make lintcode`)
+5. Lint the CSS code with `npm run csslint` (or `make lintcss`)
+6. Commit the changes with `git commit -am "Commit Title"`
+7. Push the changes with `git push -u origin Branch-Name` 
 ---
 To get a list of available commands in the Makefile, run `make help` or just `make`
 
-## Current changes:
+## (some) Current changes:
 - For a more complete list, check the wiki.
 - Locked the Patreon bonus to 100% (now called an "existence" bonus) and removed the Event/PseudoCoin tabs
 - Rewrote many descriptions, often for fun. Also added i18n to Platonic Upgrades

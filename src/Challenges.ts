@@ -93,7 +93,7 @@ export const getMaxChallenges = (i: number) => {
 }
 
 export const challengeDisplay = (i: number, changefocus = true) => {
-  let quarksMultiplier = 1
+  let quarksMultiplier = player.worlds.applyBonus(1)
 
   if (changefocus) {
     G.challengefocus = i
@@ -116,7 +116,7 @@ export const challengeDisplay = (i: number, changefocus = true) => {
   }
 
   if (i > 5 && i <= 10) {
-    quarksMultiplier = 10
+    quarksMultiplier *= 10
     if (player.challengecompletions[i] >= 25 && changefocus) {
       DOMCacheGetOrSet('completionSoftcap').innerHTML = i18next.t('challenges.perCompletionBonus', {
         x: 25,
@@ -313,7 +313,8 @@ export const challengeDisplay = (i: number, changefocus = true) => {
     && player.highestchallengecompletions[i] < maxChallenges && changefocus && player.ascensionCount >= 1
   ) {
     j.textContent = i18next.t('challenges.ascensionBankAdd', {
-      x: i > 5 ? 2 : 1,
+      x: i > 10 ? 0 : i > 5 ? 2 : 1, // C1~5: 1, C6~10: 2, C11~15: 0
+     // x: i > 5 ? 2 : 1,
       y: scoreDisplay
     })
   }

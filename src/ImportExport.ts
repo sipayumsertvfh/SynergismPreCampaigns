@@ -478,8 +478,11 @@ export const promocodes = async (input: string | null, amount?: number) => {
   if (input === 'synergism2021' && !player.codes.get(1)) {
     player.codes.set(1, true)
     player.runeshards += 25
-    player.worlds.add(50)
-    el.textContent = i18next.t('importexport.promocodes.synergism2021')
+    const quarks = 50
+    player.worlds.add(quarks)
+    el.textContent = i18next.t('importexport.promocodes.synergism2021', {
+      x: format(player.worlds.applyBonus(quarks), 2, true)
+    })
   } else if (input === ':unsmith:' && player.achievements[243] < 1) {
     achievementaward(243)
     el.textContent = i18next.t('importexport.promocodes.unsmith')
@@ -491,25 +494,28 @@ export const promocodes = async (input: string | null, amount?: number) => {
     const quarks = Math.floor(seededRandom(Seed.PromoCodes) * (400 - 100 + 1) + 100)
     player.worlds.add(quarks)
     el.textContent = i18next.t('importexport.promocodes.khafra', {
-      x: player.worlds.applyBonus(quarks)
+      x: format(player.worlds.applyBonus(quarks), 2, true)
     })
   } else if (input === 'alonso bribe' && !player.codes.get(47)) {
     const craft = player.hepteractCrafts.quark
+    const cap = craft.computeActualCap()
+
+    if (craft.UNLOCKED && cap < 1e300) {
+      player.codes.set(47, true)
+      craft.CAP = Math.min(1e300, craft.CAP * 2)
+      return Alert(i18next.t('importexport.promocodes.bribe.thanks'))
+    }
 
     if (!craft.UNLOCKED) {
       return Alert(i18next.t('importexport.promocodes.bribe.notUnlocked'))
     }
 
-    const cap = craft.computeActualCap()
-
     if (cap >= 1e300) {
       return Alert(i18next.t('importexport.promocodes.bribe.overCapacity'))
     }
 
-    player.codes.set(47, true)
-    craft.CAP = Math.min(1e300, craft.CAP * 2)
+    return Alert(i18next.t('importexport.promocodes.bribe.notUnlocked'))
 
-    return Alert(i18next.t('importexport.promocodes.bribe.thanks'))
   } else if (input.toLowerCase() === 'daily' && !player.dailyCodeUsed) {
     player.dailyCodeUsed = true
     let rewardMessage = i18next.t('importexport.promocodes.daily.message')

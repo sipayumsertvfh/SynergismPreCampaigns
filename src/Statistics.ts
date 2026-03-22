@@ -613,7 +613,7 @@ export const loadQuarkMultiplier = () => {
     format(
       1
         + (1 / 10000)
-          * Math.floor(player.octeractUpgrades.octeractQuarkGain.level / 199)
+          * Math.floor(player.octeractUpgrades.octeractQuarkGain.level / 111)
           * player.octeractUpgrades.octeractQuarkGain2.level
           * Math.floor(
             1 + Math.log10(Math.max(1, player.hepteractCrafts.quark.BAL))
@@ -735,8 +735,8 @@ export const loadStatisticsCubeMultipliers = () => {
     7: { acc: 2, desc: 'Platonic BETA:' },
     8: { acc: 2, desc: 'Platonic OMEGA:' },
     9: { acc: 2, desc: 'Overflux Powder:' },
-    10: { acc: 2, desc: 'Other funny stat that just says x1.00:' },
-    11: { acc: 2, desc: 'Singularity Penalties:' },
+    10: { acc: 2, desc: 'Other funny stat that just says x1.00:', color: 'lime' },
+    11: { acc: 2, desc: 'Singularity Penalties:', color: 'red' },
     12: { acc: 2, desc: 'Wow Pass Y:' },
     13: { acc: 2, desc: 'Starter Pack:' },
     14: { acc: 2, desc: 'Cube Flame:' },
@@ -1744,9 +1744,9 @@ export const loadStatisticsAmbrosiaLuck = () => {
     1: { acc: 0, desc: 'Base Value' },
     2: { acc: 0, desc: 'Funny stat that says +0:', color: 'gold' },
     3: { acc: 0, desc: '\'Irish Ants\' Singularity Perk:' },
-    4: { acc: 1, desc: 'Quark Shop Upgrades' },
-    5: { acc: 0, desc: 'Singularity Ambrosia Luck Upgrades' },
-    6: { acc: 0, desc: 'Octeract Ambrosia Luck Upgrades' },
+    4: { acc: 1, desc: 'Quark Shop Upgrades:' },
+    5: { acc: 0, desc: 'Singularity Ambrosia Luck Upgrades:' },
+    6: { acc: 0, desc: 'Octeract Ambrosia Luck Upgrades:' },
     7: { acc: 0, desc: 'Ambrosia - Luck Module 1:' },
     8: { acc: 1, desc: 'Ambrosia - Luck Module 2:' },
     9: { acc: 2, desc: 'Ambrosia - Cube-Luck Hybrid Module:' },

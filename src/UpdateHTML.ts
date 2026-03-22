@@ -465,12 +465,12 @@ export const revealStuff = () => {
     DOMCacheGetOrSet('platonicCubeOpensInput').style.display = 'none'
   }
 
-  ;(player.highestSingularityCount >= 50 && player.singularityCount < player.highestSingularityCount)
+  ;(player.highestSingularityCount >= 50 && (player.singularityCount < player.highestSingularityCount || player.insideSingularityChallenge))
       || player.highestSingularityCount >= 100 // Auto Cube Upgrades
     ? DOMCacheGetOrSet('toggleAutoCubeUpgrades').style.display = 'block'
     : DOMCacheGetOrSet('toggleAutoCubeUpgrades').style.display = 'none'
-  ;(player.highestSingularityCount >= 100 && player.singularityCount < player.highestSingularityCount)
-      || player.highestSingularityCount >= 200 // Auto Platonic Upgrades
+  ;(player.highestSingularityCount >= 100 && (player.singularityCount < player.highestSingularityCount || player.insideSingularityChallenge))
+      || player.highestSingularityCount >= 150 // Auto Platonic Upgrades
     ? DOMCacheGetOrSet('toggleAutoPlatonicUpgrades').style.display = 'block'
     : DOMCacheGetOrSet('toggleAutoPlatonicUpgrades').style.display = 'none'
 
