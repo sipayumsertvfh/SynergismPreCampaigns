@@ -22,14 +22,14 @@ NodeJS - https://nodejs.org/en/ (some recent version)
 8. Make your desired changes and test them. Enjoy!
 
 **To commit the changes you've made:**
-0. Note that if you only intend to run the mod locally and for yourself, you don't need to do this.
-1. Use `Ctrl+C` to exit from the previous command.
-2. Run `git add /path/to/file` or `git add -A` if any files were created
-3. Typecheck your TypeScript files with `npm run check:tsc` (or `make check`)
-4. Lint the code with `npm run lint` (or `make lintcode`)
-5. Lint the CSS code with `npm run csslint` (or `make lintcss`)
-6. Commit the changes with `git commit -am "Commit Title"`
-7. Push the changes with `git push -u origin Branch-Name` 
+1. Note that if you only intend to run the mod locally and for yourself, you don't need to do this.
+2. Use `Ctrl+C` to exit from the previous command.
+3. Run `git add /path/to/file` or `git add -A` if any files were created
+4. Typecheck your TypeScript files with `npm run check:tsc` (or `make check`)
+5. Lint the code with `npm run lint` (or `make lintcode`)
+6. Lint the CSS code with `npm run csslint` (or `make lintcss`)
+7. Commit the changes with `git commit -am "Commit Title"`
+8. Push the changes with `git push -u origin Branch-Name` 
 ---
 To get a list of available commands in the Makefile, run `make help` or just `make`
 
